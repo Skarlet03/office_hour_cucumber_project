@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/main/resources/features",
         glue = "automationPractice/step_definitions",
         dryRun = true,
-        tags = "@"
+        tags = "@ManagerLogin"
 )
 
 public class Run {
