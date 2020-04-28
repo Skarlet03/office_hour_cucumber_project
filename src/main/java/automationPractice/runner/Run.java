@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/main/resources/features",
         glue = "automationPractice/step_definitions",
-        dryRun = true,
+        dryRun = false,
         tags = "@ManagerLogin"
 )
 

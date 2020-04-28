@@ -21,7 +21,7 @@ public class ConfigurationReader {
     static {
 
         try {
-            String path = "configuration.properties";
+            String path = "Configurations.properties";
             FileInputStream input = new FileInputStream(path);
             properties = new Properties();
             properties.load(input);
