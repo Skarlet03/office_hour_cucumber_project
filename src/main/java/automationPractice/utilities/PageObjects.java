@@ -3,6 +3,7 @@ package automationPractice.utilities;
 import automationPractice.pages.BasePage;
 import automationPractice.pages.Dashboard;
 import automationPractice.pages.Login;
+import org.junit.Assert;
 
 public class PageObjects {
 
@@ -15,9 +16,12 @@ public class PageObjects {
                 return new Login();
             case "DASHBOARD":
                 return new Dashboard();
-            default:
+            case "BASE":
                 return new BasePage();
+            default:
+                Assert.fail("Page is not declared");
         }
+        return new BasePage();
     }
 
 }

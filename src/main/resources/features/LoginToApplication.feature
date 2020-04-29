@@ -10,3 +10,40 @@ Feature: Login To Application
     And User clicks on "Login" button on "Login" page
     Then "Title" should be "Dashboard" on "Dashboard" page
     And User clicks on "Contacts" button on "Dashboard" page
+
+  @ExcelData @TC002
+  Scenario: Excel Data
+    Given User on "Login" page for "VyTrack" application
+    And User gets the test data from "vytrackdata1" excel "Data Sheet" sheet "1" row
+    When User enters "username" as "manager-username" on "Login" page
+    When User enters "password" as "manager-password" on "Login" page
+    And User clicks on "Login" button on "Login" page
+    Then "Title" should be "Dashboard" on "Dashboard" page
+    And User clicks on "Contacts" button on "Dashboard" page
+    #And User clicks on "Create new contact" button on "Dashboard" page
+  # And User enters following information
+#  |first name| last name|email|||
+#    |excel|excel|qa@company.com||
+
+  @ExcelData2 @TC003
+  Scenario Outline: Excel Data
+    Given User on "Login" page for "VyTrack" application
+    And User gets the test data from "<ExcelDocument>" excel "<SheetName>" sheet "<row>" row
+#    When User enters "username" as "manager-username" on "Login" page
+#    When User enters "password" as "manager-password" on "Login" page
+#    And User clicks on "Login" button on "Login" page
+#    Then "Title" should be "Dashboard" on "Dashboard" page
+#    And User clicks on "Contacts" button on "Dashboard" page
+
+#    @client1
+#    Examples:
+#      | row |ExcelDocument|
+#      | 1   |vytrackdata1 |
+
+    @client2
+    Examples:
+      | row |ExcelDocument|SheetName|
+      | 3   |vytrackdata2 |Data Sheet|
+      | 6   |vytrackdata2 |Data Sheet2|
+#      | 2   |vytrackdata2 |
+#      | 5   |vytrackdata2 |
