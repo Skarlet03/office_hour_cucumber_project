@@ -35,6 +35,15 @@ Feature: Login To Application
     Then "Title" should be "Dashboard" on "Dashboard" page
     And User clicks on "Contacts" button on "Dashboard" page
     And User clicks on "Create Contact" button on "Contact" page
+    When User enters "First Name" as "excel" on "Contact" page
+    When User enters "Last Name" as "excel" on "Contact" page
+    When User enters "Phone" as "excel" on "Contact" page
+    When User enters "Street" as "excel" on "Contact" page
+    When User enters "City" as "excel" on "Contact" page
+    When User enters "ZipCode" as "excel" on "Contact" page
+    When User selects "Country" as "excel" on "Contact" page
+    When User selects "State" as "excel" on "Contact" page
+
 
     @client2
     Examples:

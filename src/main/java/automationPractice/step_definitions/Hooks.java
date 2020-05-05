@@ -27,7 +27,7 @@ public class Hooks {
     @After
     public void tearDownScenario() {
         System.out.println("close driver");
-        Driver.closeDriver();
+//        Driver.closeDriver();
     }
 
     @After("@db")

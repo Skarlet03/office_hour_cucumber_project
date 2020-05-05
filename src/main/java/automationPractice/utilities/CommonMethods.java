@@ -8,6 +8,8 @@ public interface CommonMethods {
 
     public default void validateResult (String object, String expected){}
 
+    public default void selectValue (String listName, String value){}
+
 
 
 }

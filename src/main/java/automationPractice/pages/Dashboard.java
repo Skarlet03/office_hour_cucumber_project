@@ -20,7 +20,13 @@ public class Dashboard extends BasePage{
 //                btn_accounts.click();
                 break;
             case "CONTACTS":
-                webDriverWait.until(ExpectedConditions.elementToBeClickable(btn_contacts));
+
+//                webDriverWait.until(ExpectedConditions.visibilityOfAllElements(btn_contacts));
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 btn_contacts.click();
                 break;
             default:
