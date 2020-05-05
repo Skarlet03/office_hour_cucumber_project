@@ -5,10 +5,12 @@ import automationPractice.utilities.ConfigurationReader;
 import automationPractice.utilities.Driver;
 import automationPractice.utilities.ExcelUtil;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage implements CommonMethods {
 
     public static String str_firstName, str_lastName, str_phone, str_city, str_postalCode, str_street, str_state, str_country;
+    public static WebDriverWait webDriverWait;
 
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);

@@ -1,13 +1,15 @@
 package automationPractice.pages;
 
+import automationPractice.step_definitions.Hooks;
 import automationPractice.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Dashboard extends BasePage{
 
-    @FindBy (xpath = "(//li/a[@href='/contact'])[4]")
+    @FindBy (xpath = "//span[.='Contacts']/following-sibling::a")
     public WebElement btn_contacts;
 
     @Override
@@ -18,6 +20,7 @@ public class Dashboard extends BasePage{
 //                btn_accounts.click();
                 break;
             case "CONTACTS":
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(btn_contacts));
                 btn_contacts.click();
                 break;
             default:
@@ -30,6 +33,7 @@ public class Dashboard extends BasePage{
         object = object.toUpperCase();
         switch (object){
             case "TITLE":
+                webDriverWait.until(ExpectedConditions.titleIs(expected));
                 Assert.assertEquals(expected, Driver.get().getTitle());
                 break;
             default:

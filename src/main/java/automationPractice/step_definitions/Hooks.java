@@ -1,8 +1,10 @@
 package automationPractice.step_definitions;
 
+import automationPractice.pages.BasePage;
 import automationPractice.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +16,7 @@ public class Hooks {
         System.out.println("set up browser");
         Driver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Driver.get().manage().window().fullscreen();
+        BasePage.webDriverWait = new WebDriverWait(Driver.get(), 10);
     }
 
     @Before(value = "@db", order = 1)

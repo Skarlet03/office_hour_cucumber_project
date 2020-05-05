@@ -1,6 +1,7 @@
 package automationPractice.utilities;
 
 import automationPractice.pages.BasePage;
+import automationPractice.pages.ContactPage;
 import automationPractice.pages.Dashboard;
 import automationPractice.pages.Login;
 import org.junit.Assert;
@@ -16,6 +17,8 @@ public class PageObjects {
                 return new Login();
             case "DASHBOARD":
                 return new Dashboard();
+            case "CONTACT":
+                return new ContactPage();
             case "BASE":
                 return new BasePage();
             default:
