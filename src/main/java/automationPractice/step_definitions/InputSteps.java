@@ -7,10 +7,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static automationPractice.pages.BasePage.*;
+import static automationPractice.pages.BasePage.filterExcelData;
+
 
 public class InputSteps {
 
@@ -42,13 +44,20 @@ public class InputSteps {
 
     @Then("User enters following information on {string} page")
     public void user_enters_following_information_on_page(String pageName, Map<String , List<String>> table) {
+        //Map<String , List<String>> table -> Map <String, String>
         BasePage page = PageObjects.getPageObject(pageName);
         System.out.println(table);
-        Map <String, String> dataMap = new HashMap();
+        Map <String, String> dataMap = new LinkedHashMap<>();
         for (String key:table.keySet()) {
-            String value = filterExcelData(key, table.get(key).get(0));
-            dataMap.put(key, value);
+            String initValue = table.get(key).get(0); //"excel"
+            //First Name=[excel]  ==> when I say table.get("First Name") will return [excel] and  .get(0) -> String "excel"
+            String value = initValue;
+            if (value.equalsIgnoreCase("excel")) {
+                value = filterExcelData(key, initValue);
+            }
+            //filterExcelData("First Name", "excel") => value from excel
+            dataMap.put(key, value); //{First Name = value from excel , .... }
         }
-
+        page.enterValue(dataMap);
     }
 }

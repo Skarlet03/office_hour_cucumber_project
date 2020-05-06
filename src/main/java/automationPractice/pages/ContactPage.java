@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Map;
+
 public class ContactPage  extends BasePage{
 
     @FindBy (linkText = "Create Contact")
@@ -42,6 +44,7 @@ public class ContactPage  extends BasePage{
         button = button.toUpperCase();
         switch (button) {
             case "CREATE CONTACT":
+                webDriverWait.until(ExpectedConditions.visibilityOfAllElements(btn_createContact));
                 webDriverWait.until(ExpectedConditions.elementToBeClickable(btn_createContact));
                 btn_createContact.click();
                 break;
@@ -89,6 +92,17 @@ public class ContactPage  extends BasePage{
                 select = new Select(lst_country);
                 select.selectByValue(value);
                 break;
+        }
+    }
+
+    @Override
+    public void enterValue(Map<String, String> datamap) {
+        for (String key : datamap.keySet()) {
+            if (key.equalsIgnoreCase("State") || key.equalsIgnoreCase("Country")){
+                selectValue(key, datamap.get(key));
+                continue;
+            }
+            enterValue(key, datamap.get(key));
         }
     }
 

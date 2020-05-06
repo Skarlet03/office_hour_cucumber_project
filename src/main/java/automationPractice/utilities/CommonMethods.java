@@ -1,5 +1,7 @@
 package automationPractice.utilities;
 
+import java.util.Map;
+
 public interface CommonMethods {
 
     public default void clickButton(String button){}
@@ -10,6 +12,6 @@ public interface CommonMethods {
 
     public default void selectValue (String listName, String value){}
 
-
+    public default void enterValue(Map<String, String> datamap){}
 
 }
