@@ -31,8 +31,38 @@ public class BasePage implements CommonMethods {
         str_country = excel.getCellData(row, 7);
         str_state = excel.getCellData(row, 8);
 
-        System.out.println(str_firstName +" "+ str_lastName + " " + str_phone);
+        System.out.println(str_firstName + " " + str_lastName + " " + str_phone);
     }
 
+    public static String filterExcelData(String field, String value) {
+        field = field.toUpperCase();
+        switch (field) {
+            case "FIRST NAME":
+                value = str_firstName;
+                break;
+            case "LAST NAME":
+                value = str_lastName;
+                break;
+            case "STREET":
+                value = str_street;
+                break;
+            case "PHONE":
+                value = str_phone;
+                break;
+            case "CITY":
+                value = str_city;
+                break;
+            case "ZIPCODE":
+                value = str_postalCode;
+                break;
+            case "STATE":
+                value = str_state;
+                break;
+            case "COUNTRY":
+                value = str_country;
+                break;
+        }
 
+        return value;
+    }
 }

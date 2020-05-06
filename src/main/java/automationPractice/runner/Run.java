@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/main/resources/features",
         glue = "automationPractice/step_definitions",
         dryRun = false,
-        tags = "@client2"
+        tags = "@TC004"
 )
 
 public class Run {

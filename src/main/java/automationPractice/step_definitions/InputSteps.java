@@ -3,7 +3,12 @@ package automationPractice.step_definitions;
 import automationPractice.pages.BasePage;
 import automationPractice.utilities.ConfigurationReader;
 import automationPractice.utilities.PageObjects;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static automationPractice.pages.BasePage.*;
 
@@ -20,27 +25,7 @@ public class InputSteps {
         } else if (value.equalsIgnoreCase("manager-password")){
             value = ConfigurationReader.get("manager-password"); // salesmanager110
         }else if (value.equalsIgnoreCase("excel")){
-            field = field.toUpperCase();
-            switch (field){
-                case "FIRST NAME":
-                    value = str_firstName;
-                    break;
-                case "LAST NAME":
-                    value = str_lastName;
-                    break;
-                case "STREET":
-                    value = str_street;
-                    break;
-                case "PHONE":
-                    value = str_phone;
-                    break;
-                case "CITY":
-                    value = str_city;
-                    break;
-                case "ZIPCODE":
-                    value = str_postalCode;
-                    break;
-            }
+            value = filterExcelData(field, value);
         }
         page.enterValue(field, value); // (username, salesmanager110)
     }
@@ -49,16 +34,21 @@ public class InputSteps {
     public void user_selects_as_on_page(String listName, String value, String pageName) {
         BasePage page = PageObjects.getPageObject(pageName);
         if (value.equalsIgnoreCase("excel")) {
-            listName = listName.toUpperCase();
-            switch (listName) {
-                case "STATE":
-                    value = str_state;
-                    break;
-                case "COUNTRY":
-                    value = str_country;
-                    break;
-            }
+            value = filterExcelData(listName, value);
         }
         page.selectValue(listName, value);
+    }
+
+
+    @Then("User enters following information on {string} page")
+    public void user_enters_following_information_on_page(String pageName, Map<String , List<String>> table) {
+        BasePage page = PageObjects.getPageObject(pageName);
+        System.out.println(table);
+        Map <String, String> dataMap = new HashMap();
+        for (String key:table.keySet()) {
+            String value = filterExcelData(key, table.get(key).get(0));
+            dataMap.put(key, value);
+        }
+
     }
 }
